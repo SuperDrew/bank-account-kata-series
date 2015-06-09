@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BankingKata;
 using NUnit.Framework;
 
@@ -43,6 +39,18 @@ namespace BankingKataTests
         {
             //Assert
             Assert.Throws<ArgumentNullException>(() => new Account(null));
+        }
+
+        [Test]
+        public void NewAccountHasZeroCash()
+        {
+            //Arrange/Act
+            var zeroCash = new Cash(0.0);
+            var account = new Account();
+            var expectedAccount = new Account(zeroCash);
+            
+            //Assert
+            Assert.That(account, Is.EqualTo(expectedAccount));
         }
 
         [Test]
