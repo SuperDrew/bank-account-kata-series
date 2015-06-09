@@ -14,7 +14,7 @@ namespace BankingKata
         {
             if (cash == null)
             {
-                throw new ArgumentNullException("Cash can't be null.");
+                throw new ArgumentNullException(@"Cash can't be null.");
             }
 
             _cash = cash;
