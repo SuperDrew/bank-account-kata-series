@@ -25,6 +25,10 @@ namespace BankingKata
             _cash += cash;
         }
 
+        public void Withdraw(Cash cash)
+        {
+        }
+
         protected bool Equals(Account other)
         {
             return _cash.Equals(other._cash);

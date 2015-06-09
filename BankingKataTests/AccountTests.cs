@@ -67,5 +67,16 @@ namespace BankingKataTests
             //Assert
             Assert.That(account, Is.EqualTo(expectedAccount));
         }
+
+        [Test]
+        public void CanWithdrawCash()
+        {
+            //Arrange
+            var account = new Account();
+            var cash = new Cash(1);
+
+            //Act
+            account.Deposit(cash);
+        }
     }
 }
