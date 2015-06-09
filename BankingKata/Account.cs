@@ -27,6 +27,7 @@ namespace BankingKata
 
         public void Withdraw(Cash cash)
         {
+            _cash -= cash;
         }
 
         protected bool Equals(Account other)
