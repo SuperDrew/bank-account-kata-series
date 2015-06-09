@@ -78,5 +78,20 @@ namespace BankingKataTests
             //Act
             account.Withdraw(cash);
         }
+
+        [Test]
+        public void DoesWithdrawReduceTotalCorrectly()
+        {
+            //Arrange
+            var cash = new Cash(1);
+            var account = new Account(cash);
+            var expectedAccount = new Account();
+
+            //Act
+            account.Withdraw(cash);
+
+            //Assert
+            Assert.That(account, Is.EqualTo(expectedAccount));
+        }
     }
 }
