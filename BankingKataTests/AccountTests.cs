@@ -28,7 +28,7 @@ namespace BankingKataTests
         {
             //Arrange
             var account = new Account();
-            var cash = new Cash(10.45);
+            var cash = new Cash(1);
             
             //Act
             account.Deposit(cash);
@@ -57,7 +57,7 @@ namespace BankingKataTests
         public void DoesDepositAddToTotalCorrectly()
         {
             //Arrange
-            var cash = new Cash(5);
+            var cash = new Cash(1);
             var account = new Account();
             var expectedAccount = new Account(cash);
 
