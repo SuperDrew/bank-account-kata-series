@@ -8,5 +8,23 @@
         {
             _cash = cash;
         }
+
+        protected bool Equals(Cash other)
+        {
+            return _cash.Equals(other._cash);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Cash) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return _cash.GetHashCode();
+        }
     }
 }
