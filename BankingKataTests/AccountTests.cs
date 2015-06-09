@@ -37,5 +37,22 @@ namespace BankingKataTests
             //Act
             account.Deposit(cash);
         }
+
+        [Test]
+        public void DoesDepositAddToTotalCorrectly()
+        {
+            //Arrange
+            var cash1 = new Cash(5);
+            var account = new Account();
+            var expectedAccount = new Account(cash1);
+
+            //Act
+            account.Deposit(cash1);
+
+            //Assert
+            Assert.That(account, Is.EqualTo(expectedAccount));
+
+
+        }
     }
 }
