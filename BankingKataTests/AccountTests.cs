@@ -39,6 +39,13 @@ namespace BankingKataTests
         }
 
         [Test]
+        public void CantCreateAccountWithNullCash()
+        {
+            //Assert
+            Assert.Throws<ArgumentNullException>(() => new Account(null));
+        }
+
+        [Test]
         public void DoesDepositAddToTotalCorrectly()
         {
             //Arrange
