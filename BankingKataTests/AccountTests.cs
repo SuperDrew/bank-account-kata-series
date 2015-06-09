@@ -18,6 +18,16 @@ namespace BankingKataTests
         }
 
         [Test]
+        public void CanConstructAccountWithCash()
+        {
+            //Arrange
+            var cash = new Cash(98.88);
+            
+            //Act
+            new Account(cash);
+        }
+
+        [Test]
         public void CanDepositCash()
         {
             //Arrange
