@@ -17,7 +17,7 @@ namespace BankingKataTests
         public void CanConstructAccountWithCash()
         {
             //Arrange
-            var cash = new Cash(98.88);
+            var cash = new Cash(1);
             
             //Act
             new Account(cash);
@@ -76,7 +76,7 @@ namespace BankingKataTests
             var cash = new Cash(1);
 
             //Act
-            account.Deposit(cash);
+            account.Withdraw(cash);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace BankingKataTests
         [Test]
         public void CanConstructCash()
         {
-            new Cash(8);
+            new Cash(1);
         }
 
         [Test]
