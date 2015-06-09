@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BankingKata;
 using NUnit.Framework;
 
 namespace BankingKataTests
@@ -25,23 +26,6 @@ namespace BankingKataTests
             
             //Act
             account.Deposit(cash);
-        }
-    }
-
-    internal class Cash
-    {
-        private readonly double _cash;
-
-        public Cash(double cash)
-        {
-            _cash = cash;
-        }
-    }
-
-    internal class Account
-    {
-        public void Deposit(Cash cash)
-        {
         }
     }
 }
