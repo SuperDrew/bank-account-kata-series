@@ -14,6 +14,11 @@
             return new Cash(casha._cash + cashb._cash);
         }
 
+        public static Cash operator -(Cash casha, Cash cashb)
+        {
+            return new Cash(casha._cash - cashb._cash);
+        }
+
         protected bool Equals(Cash other)
         {
             return _cash.Equals(other._cash);
