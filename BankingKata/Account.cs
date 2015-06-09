@@ -4,7 +4,7 @@ namespace BankingKata
 {
     public class Account
     {
-        private readonly Cash _cash = new Cash(0.0);
+        private Cash _cash = new Cash(0.0);
 
         public Account()
         {
@@ -22,6 +22,7 @@ namespace BankingKata
 
         public void Deposit(Cash cash)
         {
+            _cash += cash;
         }
 
         protected bool Equals(Account other)
