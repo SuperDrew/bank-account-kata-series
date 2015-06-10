@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace BankingKataTests.AccountTests
 {
     [TestFixture]
-    class AccountTests
+    class FunctionalTests
     {
         [Test]
         public void NewAccountHasZeroCash()

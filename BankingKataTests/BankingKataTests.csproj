@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountTests.cs" />
+    <Compile Include="AccountTests\FunctionalTests.cs" />
+    <Compile Include="AccountTests\CanTests.cs" />
     <Compile Include="CashTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
