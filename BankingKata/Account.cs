@@ -30,7 +30,7 @@ namespace BankingKata
             _cash -= cash;
         }
 
-        protected bool Equals(Account other)
+        private bool Equals(Account other)
         {
             return _cash.Equals(other._cash);
         }
@@ -39,7 +39,7 @@ namespace BankingKata
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((Account) obj);
         }
 

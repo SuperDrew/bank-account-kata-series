@@ -19,7 +19,7 @@
             return new Cash(casha._cash - cashb._cash);
         }
 
-        protected bool Equals(Cash other)
+        private bool Equals(Cash other)
         {
             return _cash.Equals(other._cash);
         }
@@ -28,7 +28,7 @@
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((Cash) obj);
         }
 
