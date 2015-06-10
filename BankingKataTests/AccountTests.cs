@@ -10,7 +10,8 @@ namespace BankingKataTests
         [Test]
         public void CanConstructAccount()
         {
-            new Account();
+            // ReSharper disable once ObjectCreationAsStatement
+            Assert.DoesNotThrow(() => new Account());
         }
 
         [Test]
@@ -19,8 +20,9 @@ namespace BankingKataTests
             //Arrange
             var cash = new Cash(1);
             
-            //Act
-            new Account(cash);
+            //Act/Assert
+            // ReSharper disable once ObjectCreationAsStatement
+            Assert.DoesNotThrow(() => new Account(cash));
         }
 
         [Test]
@@ -38,6 +40,7 @@ namespace BankingKataTests
         public void CantCreateAccountWithNullCash()
         {
             //Assert
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentNullException>(() => new Account(null));
         }
 

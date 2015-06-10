@@ -9,14 +9,15 @@ namespace BankingKataTests
         [Test]
         public void CanConstructCash()
         {
-            new Cash(1);
+            // ReSharper disable once ObjectCreationAsStatement
+            Assert.DoesNotThrow(() => new Cash(1));
         }
 
         [Test]
         public void CashesWithSameValueAreEqual()
         {
             //Arrange
-            var cashValue = 1;
+            const int cashValue = 1;
             var cash1 = new Cash(cashValue);
             var cash2 = new Cash(cashValue);
 
@@ -28,7 +29,7 @@ namespace BankingKataTests
         public void CanAddCashes()
         {
             //Arrange
-            var cashValue = 1;
+            const int cashValue = 1;
 
             var cash1 = new Cash(cashValue);
             var cash2 = new Cash(cashValue);
@@ -45,7 +46,7 @@ namespace BankingKataTests
         public void CanSubtractCashes()
         {
             //Arrange
-            var cashValue = 1;
+            const int cashValue = 1;
 
             var cash1 = new Cash(cashValue);
             var cash2 = new Cash(cashValue);
