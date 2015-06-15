@@ -28,8 +28,8 @@ namespace BankingKataSpecs.AccountSpecs.Steps
             accountData.Account = new Account();
         }
 
-        [Then(@"Creating an account should throw an argument null exception\.")]
-        public void ThenCreatingAnAccountShouldThrowAnArgumentNullException_()
+        [Then(@"Creating an account should throw an argument null exception")]
+        public void ThenCreatingAnAccountShouldThrowAnArgumentNullException()
         {
             // Assert
             Assert.Throws<ArgumentNullException>(() => new Account(accountData.Cash));

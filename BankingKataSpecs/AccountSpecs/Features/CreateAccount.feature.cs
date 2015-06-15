@@ -95,7 +95,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
  testRunner.And("I have null cash", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
- testRunner.Then("Creating an account should throw an argument null exception.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Creating an account should throw an argument null exception", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -12,7 +12,7 @@ Scenario: New account has zero cash.
 Scenario: New account can't take null cash.
 	Given I want to create an account
 	And I have null cash
-	Then Creating an account should throw an argument null exception.
+	Then Creating an account should throw an argument null exception
 
 Scenario: New account created with some cash.
 	Given I create an account with 1 cash
