@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountSpecs\Steps\AccountArrangeSteps.cs" />
     <Compile Include="AccountSpecs\Steps\AccountCashHandlingSteps.cs" />
     <Compile Include="AccountSpecs\AccountData.cs" />
     <Compile Include="AccountSpecs\Steps\CashSteps.cs" />

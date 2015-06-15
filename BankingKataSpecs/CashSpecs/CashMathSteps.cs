@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BankingKata;
+﻿using BankingKata;
 using BankingKataSpecs.AccountSpecs;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
