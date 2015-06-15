@@ -78,7 +78,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.When("I create a new account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
- testRunner.Then("the account should have zero cash", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the account should have 0 cash", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -101,18 +101,16 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("New account created with my cash.")]
-        public virtual void NewAccountCreatedWithMyCash_()
+        [NUnit.Framework.DescriptionAttribute("New account created with some cash.")]
+        public virtual void NewAccountCreatedWithSomeCash_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("New account created with my cash.", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("New account created with some cash.", ((string[])(null)));
 #line 17
 this.ScenarioSetup(scenarioInfo);
 #line 18
- testRunner.Given("I have some cash", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I create an account with 1 cash", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 19
- testRunner.And("I create an account with my cash", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 20
- testRunner.Then("the account total should be the same as my cash.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the account should have 1 cash", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

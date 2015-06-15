@@ -5,7 +5,6 @@
 
 @mytag
 Scenario: Withdrawing my cash
-	Given I have some cash
-	And I create an account with my cash
-	When I withdraw my cash
-	Then the account should have zero cash
+	Given I create an account with 1 cash
+	When I withdraw 1 cash
+	Then the account should have 0 cash

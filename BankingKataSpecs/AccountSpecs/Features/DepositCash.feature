@@ -5,8 +5,6 @@
 
 @mytag
 Scenario: Depositing my cash
-	Given I have zero cash
-	And I create an account with my cash
-	And I have some cash
-	When I deposit my cash
-	Then My account should have the same Cash as my cash
+	Given I create an account with 0 cash
+	When I deposit 1 cash
+	Then the account should have 1 cash

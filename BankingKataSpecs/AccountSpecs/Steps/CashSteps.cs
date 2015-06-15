@@ -1,7 +1,7 @@
 ﻿using BankingKata;
 using TechTalk.SpecFlow;
 
-namespace BankingKataSpecs.AccountSpecs
+namespace BankingKataSpecs.AccountSpecs.Steps
 {
     [Binding]
     public sealed class CashSteps
@@ -18,12 +18,6 @@ namespace BankingKataSpecs.AccountSpecs
         {
             //Arrange
             accountData.Cash = new Cash(0.0);
-        }
-
-        [Given(@"I have some cash")]
-        public void GivenIHaveSomeCash()
-        {
-            accountData.Cash = new Cash(1.0);
         }
 
         [Given(@"I have null cash")]

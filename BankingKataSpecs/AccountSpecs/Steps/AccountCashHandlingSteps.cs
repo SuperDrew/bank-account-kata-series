@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BankingKata;
+﻿using BankingKata;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
-namespace BankingKataSpecs.AccountSpecs
+namespace BankingKataSpecs.AccountSpecs.Steps
 {
     [Binding]
     public sealed class AccountCashHandlingSteps
@@ -18,28 +14,28 @@ namespace BankingKataSpecs.AccountSpecs
             this.accountData = accountData;
         }
 
-        [When(@"I deposit my cash")]
-        public void WhenIDepositMyCash()
+        [When(@"I deposit (.*) cash")]
+        public void WhenIDepositCash(int p0)
         {
             //Arrange
-            accountData.Account.Deposit(accountData.Cash);
+            accountData.Account.Deposit(new Cash(p0));
         }
 
-        [Then(@"My account should have the same Cash as my cash")]
-        public void ThenMyAccountShouldHaveTheSameCashAsMyCash()
+        [Then(@"the account should have (.*) cash")]
+        public void ThenTheAccountShouldHaveCash(int p0)
         {
             //Arrange
-            var expectedAccount = new Account(accountData.Cash);
+            var expectedAccount = new Account(new Cash(p0));
 
             //Assert
             Assert.That(accountData.Account, Is.EqualTo(expectedAccount));
         }
-
-        [When(@"I withdraw my cash")]
-        public void WhenIWithdrawMyCash()
+        
+        [When(@"I withdraw (.*) cash")]
+        public void WhenIWithdrawCash(int p0)
         {
             //Arrange
-            accountData.Account.Withdraw(accountData.Cash);
+            accountData.Account.Withdraw(new Cash(p0));;
         }
 
     }
