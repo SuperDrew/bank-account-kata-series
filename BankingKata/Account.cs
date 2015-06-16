@@ -47,5 +47,10 @@ namespace BankingKata
         {
             return _cash.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return String.Format("Account Cash: {0}", _cash);
+        }
     }
 }
