@@ -8,11 +8,11 @@ namespace BankingKataSpecs.AccountSpecs.Steps
     [Binding]
     public sealed class CreateAccountSteps
     {
-        private readonly AccountData accountData;
+        private readonly AccountData _accountData;
 
         public CreateAccountSteps(AccountData accountData)
         {
-            this.accountData = accountData;
+            _accountData = accountData;
         }
         
         [Given(@"I want to create an account")]
@@ -25,21 +25,22 @@ namespace BankingKataSpecs.AccountSpecs.Steps
         public void WhenICreateANewAccount()
         {
             //Act
-            accountData.Account = new Account();
+            _accountData.Account = new Account();
         }
 
         [Then(@"Creating an account should throw an argument null exception")]
         public void ThenCreatingAnAccountShouldThrowAnArgumentNullException()
         {
             // Assert
-            Assert.Throws<ArgumentNullException>(() => new Account(accountData.Cash));
+            // ReSharper disable once ObjectCreationAsStatement
+            Assert.Throws<ArgumentNullException>(() => new Account(_accountData.Cash));
         }
 
         [Given(@"I create an account with (.*) cash")]
         public void GivenICreateAnAccountWithCash(int p0)
         {
             //Act
-            accountData.Account = new Account(new Cash(p0));
+            _accountData.Account = new Account(new Cash(p0));
         }
     }
 }

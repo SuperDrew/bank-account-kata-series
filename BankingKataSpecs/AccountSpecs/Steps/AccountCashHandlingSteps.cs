@@ -7,18 +7,18 @@ namespace BankingKataSpecs.AccountSpecs.Steps
     [Binding]
     public sealed class AccountCashHandlingSteps
     {
-        private AccountData accountData;
+        private readonly AccountData _accountData;
 
         public AccountCashHandlingSteps(AccountData accountData)
         {
-            this.accountData = accountData;
+            _accountData = accountData;
         }
 
         [When(@"I deposit (.*) cash")]
         public void WhenIDepositCash(int p0)
         {
             //Arrange
-            accountData.Account.Deposit(new Cash(p0));
+            _accountData.Account.Deposit(new Cash(p0));
         }
 
         [Then(@"the account should have (.*) cash")]
@@ -28,15 +28,14 @@ namespace BankingKataSpecs.AccountSpecs.Steps
             var expectedAccount = new Account(new Cash(p0));
 
             //Assert
-            Assert.That(accountData.Account, Is.EqualTo(expectedAccount));
+            Assert.That(_accountData.Account, Is.EqualTo(expectedAccount));
         }
         
         [When(@"I withdraw (.*) cash")]
         public void WhenIWithdrawCash(int p0)
         {
             //Arrange
-            accountData.Account.Withdraw(new Cash(p0));;
+            _accountData.Account.Withdraw(new Cash(p0));
         }
-
     }
 }
