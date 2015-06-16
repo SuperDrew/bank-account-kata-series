@@ -45,8 +45,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountSpecs\Features\ToStringOverride.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToStringOverride.feature</DependentUpon>
+    </Compile>
     <Compile Include="AccountSpecs\Steps\AccountCashHandlingSteps.cs" />
     <Compile Include="AccountSpecs\AccountData.cs" />
+    <Compile Include="AccountSpecs\Steps\AccountInfoSteps.cs" />
     <Compile Include="AccountSpecs\Steps\CashSteps.cs" />
     <Compile Include="AccountSpecs\Steps\CreateAccountSteps.cs" />
     <Compile Include="AccountSpecs\Features\CreateAccount.feature.cs">
@@ -76,6 +82,10 @@
     <None Include="AccountSpecs\Features\DepositCash.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DepositCash.feature.cs</LastGenOutput>
+    </None>
+    <None Include="AccountSpecs\Features\ToStringOverride.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ToStringOverride.feature.cs</LastGenOutput>
     </None>
     <None Include="AccountSpecs\Features\WithdrawCash.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

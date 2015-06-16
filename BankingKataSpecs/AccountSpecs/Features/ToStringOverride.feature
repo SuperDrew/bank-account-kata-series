@@ -1,11 +1,9 @@
 ﻿Feature: ToStringOverride
-	In order to avoid silly mistakes
+	In order to get useful information about an account
 	As a math idiot
-	I want to be told the sum of two numbers
+	I want to be able to get an informative ToStirng for an account.
 
 @mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+Scenario: Get summary of account
+	Given I create an account with 5 cash
+	Then The ToString should have 5 cash
