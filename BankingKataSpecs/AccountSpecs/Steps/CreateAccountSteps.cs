@@ -15,12 +15,6 @@ namespace BankingKataSpecs.AccountSpecs.Steps
             _accountData = accountData;
         }
         
-        [Given(@"I want to create an account")]
-        public void GivenIWantToCreateAnAccount()
-        {
-            //TODO is anything needed here?
-        }
-
         [When(@"I create a new account")]
         public void WhenICreateANewAccount()
         {
