@@ -14,8 +14,8 @@ namespace BankingKataSpecs.AccountSpecs.Steps
             _accountData = accountData;
         }
 
-        [Then(@"The ToString should have (.*) cash")]
-        public void ThenTheToStringShouldHaveCash(int p0)
+        [Then(@"The account information should contain (.*) cash")]
+        public void ThenTheAccountInformationShouldContainCash(int p0)
         {
             //Assert
             Assert.That(_accountData.Account.ToString(), Is.StringContaining(p0.ToString(CultureInfo.CurrentCulture)));
