@@ -1,4 +1,6 @@
-﻿namespace BankingKata
+﻿using System.Globalization;
+
+namespace BankingKata
 {
     public class Cash
     {
@@ -35,6 +37,11 @@
         public override int GetHashCode()
         {
             return _cash.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return _cash.ToString(CultureInfo.CurrentCulture);
         }
     }
 }
