@@ -4,8 +4,7 @@ namespace BankingKata
     {
         public Money Visit(ITransaction currentTransaction, Money balance)
         {
-            balance = currentTransaction.ApplyTo(balance);
-            return balance;
+            return currentTransaction.ApplyTo(balance);
         }
     }
 }
