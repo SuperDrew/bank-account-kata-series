@@ -41,7 +41,7 @@ namespace BankingKataTests
             var money = new Money(3m);
             var account = new Account(ledger);
 
-            var myCheque = new Cheque(100001, money);
+            var myCheque = new Cheque(100001, money, new DateTime(2015, 07, 13));
             account.ChequeWithdraw(myCheque);
 
             ledger.Received().Record(myCheque);
