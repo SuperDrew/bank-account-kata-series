@@ -27,12 +27,6 @@ namespace BankingKata
             return _ledger.Accept(new BalanceCalculatingVisitor(), new Money(0m));
         }
 
-        public void Withdraw(DateTime transactionDate, Money money)
-        {
-            var debitEntry = new ATMDebitEntry(transactionDate, money);
-            _ledger.Record(debitEntry);
-        }
-
         public void Withdraw(DebitEntry debitEntry)
         {
             _ledger.Record(debitEntry);
