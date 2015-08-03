@@ -35,7 +35,7 @@ namespace BankingKata
 
         public void ChequeWithdraw(Cheque cheque)
         {
-            Withdraw(DateTime.Now, cheque.Money);
+            _transactionLog.Record(cheque);
         }
 
         public void PrintBalance(IPrinter printer)

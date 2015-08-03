@@ -44,8 +44,7 @@ namespace BankingKataTests
             var myCheque = new Cheque(100001, money);
             account.ChequeWithdraw(myCheque);
 
-            var debitEntry = new DebitEntry(DateTime.Now, money);
-            ledger.Received().Record(debitEntry);
+            ledger.Received().Record(myCheque);
         }
 
         [Test]
