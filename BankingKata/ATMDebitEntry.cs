@@ -2,12 +2,12 @@
 
 namespace BankingKata
 {
-    public class DebitEntry : ITransaction
+    public class ATMDebitEntry : ITransaction
     {
         private readonly DateTime transactionDate;
         private readonly Money transactionAmount;
 
-        public DebitEntry(DateTime transactionDate, Money transactionAmount)
+        public ATMDebitEntry(DateTime transactionDate, Money transactionAmount)
         {
             this.transactionDate = transactionDate;
             this.transactionAmount = transactionAmount;
@@ -20,7 +20,7 @@ namespace BankingKata
 
         public override bool Equals(object obj)
         {
-            var transaction = (obj as DebitEntry);
+            var transaction = (obj as ATMDebitEntry);
             return transaction != null && transactionAmount.Equals(transaction.transactionAmount);
         }
 

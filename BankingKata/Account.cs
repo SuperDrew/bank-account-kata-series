@@ -29,7 +29,7 @@ namespace BankingKata
 
         public void Withdraw(DateTime transactionDate, Money money)
         {
-            var debitEntry = new DebitEntry(transactionDate, money);
+            var debitEntry = new ATMDebitEntry(transactionDate, money);
             _ledger.Record(debitEntry);
         }
 

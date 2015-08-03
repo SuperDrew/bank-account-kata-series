@@ -2,7 +2,7 @@
 
 namespace BankingKata
 {
-    public class Cheque : DebitEntry
+    public class Cheque : ATMDebitEntry
     {
         private readonly int _chequeNumber;
         private readonly Money _amount;

@@ -30,7 +30,7 @@ namespace BankingKataTests
 
             account.Withdraw(DateTime.Now, money);
 
-            var debitEntry = new DebitEntry(DateTime.Now, money);
+            var debitEntry = new ATMDebitEntry(DateTime.Now, money);
             ledger.Received().Record(debitEntry);
         }
 
