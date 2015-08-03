@@ -33,6 +33,11 @@ namespace BankingKata
             _transactionLog.Record(debitEntry);
         }
 
+        public void ChequeWithdraw(Cheque cheque)
+        {
+            Withdraw(DateTime.Now, cheque.Money);
+        }
+
         public void PrintBalance(IPrinter printer)
         {
             var balance = CalculateBalance();

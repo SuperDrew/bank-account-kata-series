@@ -35,6 +35,20 @@ namespace BankingKataTests
         }
 
         [Test]
+        public void AccountRecordsChequeWithdrawalInTransactionLog()
+        {
+            var ledger = Substitute.For<ILedger>();
+            var money = new Money(3m);
+            var account = new Account(ledger);
+
+            var myCheque = new Cheque(100001, money);
+            account.ChequeWithdraw(myCheque);
+
+            var debitEntry = new DebitEntry(DateTime.Now, money);
+            ledger.Received().Record(debitEntry);
+        }
+
+        [Test]
         public void CalculateBalanceTotalsAllDepositsMadeToTheAccount()
         {
             var ledger = Substitute.For<ILedger>();
