@@ -42,6 +42,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="Cheque.cs" />
     <Compile Include="ATMDebitEntry.cs" />
+    <Compile Include="DebitEntry.cs" />
     <Compile Include="ILedger.cs" />
     <Compile Include="ITransaction.cs" />
     <Compile Include="ITransactionVisitor.cs" />
