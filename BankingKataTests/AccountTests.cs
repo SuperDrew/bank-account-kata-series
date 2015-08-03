@@ -42,7 +42,7 @@ namespace BankingKataTests
             var account = new Account(ledger);
 
             var myCheque = new Cheque(new DateTime(2015, 07, 13), money, 100001);
-            account.ChequeWithdraw(myCheque);
+            account.Withdraw(myCheque);
 
             ledger.Received().Record(myCheque);
         }

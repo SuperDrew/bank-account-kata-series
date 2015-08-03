@@ -33,9 +33,9 @@ namespace BankingKata
             _ledger.Record(debitEntry);
         }
 
-        public void ChequeWithdraw(Cheque cheque)
+        public void Withdraw(DebitEntry debitEntry)
         {
-            _ledger.Record(cheque);
+            _ledger.Record(debitEntry);
         }
 
         public void PrintBalance(IPrinter printer)
