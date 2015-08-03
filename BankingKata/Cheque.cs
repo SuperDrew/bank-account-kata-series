@@ -8,7 +8,7 @@ namespace BankingKata
         private readonly Money _amount;
         private readonly DateTime _transactionDate;
 
-        public Cheque(int chequeNumber, Money amount, DateTime transactionDate)
+        public Cheque(DateTime transactionDate, Money amount, int chequeNumber)
         {
             _transactionDate = transactionDate;
             _chequeNumber = chequeNumber;

@@ -95,7 +95,7 @@ namespace BankingKataTests
             var account = new Account();
 
             var money = new Money(123m);
-            var myCheque = new Cheque(100001, money, new DateTime(2015, 07, 13));
+            var myCheque = new Cheque(new DateTime(2015, 07, 13), money, 100001);
             account.ChequeWithdraw(myCheque);
 
             var stringWriter = new StringWriter();
