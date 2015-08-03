@@ -2,11 +2,11 @@
 
 namespace BankingKata
 {
-    public class Cheque : DebitEntry
+    public class ChequeDebitEntry : DebitEntry
     {
         private readonly int _chequeNumber;
 
-        public Cheque(DateTime transactionDate, Money amount, int chequeNumber)
+        public ChequeDebitEntry(DateTime transactionDate, Money amount, int chequeNumber)
             : base(transactionDate, amount)
         {
             _chequeNumber = chequeNumber;
