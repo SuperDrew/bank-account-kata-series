@@ -20,7 +20,7 @@ namespace BankingKata
 
         public override bool Equals(object obj)
         {
-            var transaction = (obj as ATMDebitEntry);
+            var transaction = (obj as DebitEntry);
             return transaction != null && transactionAmount.Equals(transaction.transactionAmount);
         }
 
