@@ -43,5 +43,18 @@ namespace BankingKataTests
             var expectedTotal = new Money(-4m);
             Assert.That(actualTotal, Is.EqualTo(expectedTotal));
         }
+
+        [Test]
+        public void TheTotalAccountValueIsDebitedTheCorrectAmountWhenAChequeIsWithdrawn()
+        {
+            var transactionLog = new Ledger();
+
+            transactionLog.Record(new Cheque(DateTime.Now, new Money(1m), 100001));
+
+            var actualTotal = transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
+
+            var expectedTotal = new Money(-1m);
+            Assert.That(actualTotal, Is.EqualTo(expectedTotal));
+        }
     }
 }
