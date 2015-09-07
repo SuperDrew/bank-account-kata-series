@@ -9,63 +9,69 @@ namespace BankingKataTests
     [TestFixture]
     public class AccountTests
     {
+        private ILedger _ledger;
+        private readonly Money _ledgerCalculatedBalance = new Money(10m);
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            _ledger = Substitute.For<ILedger>();
+            _ledger.Accept(Arg.Any<BalanceCalculatingVisitor>(), Arg.Any<Money>()).Returns(_ledgerCalculatedBalance);
+        }
+
         [Test]
         public void AccountRecordsDepositInTransactionLog()
         {
-            var ledger = Substitute.For<ILedger>();
             var money = new Money(3m);
-            var account = new Account(ledger);
+            var account = new Account(_ledger);
 
             account.Deposit(DateTime.Now, money);
 
-            CreditEntry deposit = new CreditEntry(DateTime.Now, money);
-            ledger.Received().Record(deposit);
+            var deposit = new CreditEntry(DateTime.Now, money);
+            _ledger.Received().Record(deposit);
         }
 
         [Test]
         public void AccountRecordsWithdrawalInTransactionLog()
         {
-            var ledger = Substitute.For<ILedger>();
             var money = new Money(3m);
-            var account = new Account(ledger);
+            var account = new Account(_ledger);
 
             var debitEntry = new ATMDebitEntry(DateTime.Now, money);
             account.Withdraw(debitEntry);
 
-            ledger.Received().Record(debitEntry);
+            _ledger.Received().Record(debitEntry);
         }
 
         [Test]
         public void AccountRecordsChequeWithdrawalInTransactionLog()
         {
-            var ledger = Substitute.For<ILedger>();
             var money = new Money(3m);
-            var account = new Account(ledger);
+            var account = new Account(_ledger);
 
             var myCheque = new ChequeDebitEntry(new DateTime(2015, 07, 13), money, 100001);
             account.Withdraw(myCheque);
 
-            ledger.Received().Record(myCheque);
+            _ledger.Received().Record(myCheque);
         }
 
         [Test]
         public void CalculateBalanceTotalsAllDepositsMadeToTheAccount()
         {
-            var ledger = Substitute.For<ILedger>();
-            var account = new Account(ledger);
+            var account = new Account(_ledger);
 
             account.CalculateBalance();
 
-            ledger.Received().Accept(Arg.Any<BalanceCalculatingVisitor>(), new Money(0m));
+            _ledger.Received().Accept(Arg.Any<BalanceCalculatingVisitor>(), new Money(0m));
         }
 
         [Test]
         public void LedgerTotalIsReturnedByCalculate()
         {
             var expectedBalance = new Money(13m);
-            var ledger = Substitute.For<ILedger>();
-            ledger.Accept(Arg.Any<BalanceCalculatingVisitor>(), new Money(0m)).Returns(expectedBalance);
-            var account = new Account(ledger);
+            _ledger.Accept(Arg.Any<BalanceCalculatingVisitor>(), new Money(0m)).Returns(expectedBalance);
+            var account = new Account(_ledger);
 
             var actualBalance = account.CalculateBalance();
 
@@ -75,8 +81,7 @@ namespace BankingKataTests
         [Test]
         public void CanAlwaysWithdraw()
         {
-            var ledger = Substitute.For<ILedger>();
-            var account = new Account(ledger);
+            var account = new Account(_ledger);
 
             var debitEntry = new ATMDebitEntry(DateTime.Now, new Money(3m));
             var transactionResult = account.Withdraw(debitEntry);
@@ -86,12 +91,11 @@ namespace BankingKataTests
         }
 
 
-        [TestCase(3, false, TestName = "TransactionFailsWhenWithdrawIsOverLimit")]
+        [TestCase(20, false, TestName = "TransactionFailsWhenWithdrawIsOverLimit")]
         [TestCase(0, true, TestName = "TransactionSucceedsWhenWithdrawIsUnderLimit")]
         public void WithdrawResultIsCorrect(Decimal withdrawAmount, bool transactionSuccess)
         {
-            var ledger = Substitute.For<ILedger>();
-            var account = new Account(ledger);
+            var account = new Account(_ledger);
 
             var debitEntry = new ATMDebitEntry(DateTime.Now, new Money(withdrawAmount));
             var transactionResult = account.Withdraw(debitEntry);

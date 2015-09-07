@@ -39,6 +39,12 @@ namespace BankingKata
 
         public TransactionResult Withdraw(DebitEntry debitEntry)
         {
+            var balance = CalculateBalance();
+            if (debitEntry.ApplyTo(balance) < DefaultHardLimit)
+            {
+                return new TransactionResult(false);
+            }
+
             _ledger.Record(debitEntry);
             return new TransactionResult(true);
         }
