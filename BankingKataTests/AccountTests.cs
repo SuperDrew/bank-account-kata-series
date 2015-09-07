@@ -1,4 +1,5 @@
-﻿using BankingKata;
+﻿using System.Collections;
+using BankingKata;
 using NSubstitute;
 using NUnit.Framework;
 using System;
@@ -81,6 +82,21 @@ namespace BankingKataTests
             var transactionResult = account.Withdraw(debitEntry);
 
             var expectedResult = new TransactionResult(true);
+            Assert.That(transactionResult, Is.EqualTo(expectedResult));
+        }
+
+
+        [TestCase(3, false, TestName = "TransactionFailsWhenWithdrawIsOverLimit")]
+        [TestCase(0, true, TestName = "TransactionSucceedsWhenWithdrawIsUnderLimit")]
+        public void WithdrawResultIsCorrect(Decimal withdrawAmount, bool transactionSuccess)
+        {
+            var ledger = Substitute.For<ILedger>();
+            var account = new Account(ledger);
+
+            var debitEntry = new ATMDebitEntry(DateTime.Now, new Money(withdrawAmount));
+            var transactionResult = account.Withdraw(debitEntry);
+
+            var expectedResult = new TransactionResult(transactionSuccess);
             Assert.That(transactionResult, Is.EqualTo(expectedResult));
         }
     }
