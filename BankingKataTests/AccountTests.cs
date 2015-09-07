@@ -70,5 +70,18 @@ namespace BankingKataTests
 
             Assert.That(actualBalance, Is.EqualTo(expectedBalance));
         }
+
+        [Test]
+        public void CanAlwaysWithdraw()
+        {
+            var ledger = Substitute.For<ILedger>();
+            var account = new Account(ledger);
+
+            var debitEntry = new ATMDebitEntry(DateTime.Now, new Money(3m));
+            var transactionResult = account.Withdraw(debitEntry);
+
+            var expectedResult = new TransactionResult(true);
+            Assert.That(transactionResult, Is.EqualTo(expectedResult));
+        }
     }
 }

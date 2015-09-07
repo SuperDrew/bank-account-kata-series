@@ -5,6 +5,7 @@ namespace BankingKata
     public class Account
     {
         private static readonly Money DefaultHardLimit = new Money(0);
+        private static readonly Money InitialAccountBalance = new Money(0m);
 
         private readonly ILedger _ledger;
         private readonly Money _hardLimit;
@@ -14,9 +15,14 @@ namespace BankingKata
             _ledger = ledger;
             _hardLimit = hardLimit;
         }
-
+        
+        public Account(ILedger ledger)
+            : this(ledger, DefaultHardLimit)
+        {
+        }
+        
         public Account()
-            : this(new Ledger(), DefaultHardLimit)
+            : this(new Ledger())
         {
         }
 
@@ -28,12 +34,13 @@ namespace BankingKata
 
         public Money CalculateBalance()
         {
-            return _ledger.Accept(new BalanceCalculatingVisitor(), new Money(0m));
+            return _ledger.Accept(new BalanceCalculatingVisitor(), InitialAccountBalance);
         }
 
-        public void Withdraw(DebitEntry debitEntry)
+        public TransactionResult Withdraw(DebitEntry debitEntry)
         {
             _ledger.Record(debitEntry);
+            return new TransactionResult(true);
         }
 
         public void PrintBalance(IPrinter printer)
