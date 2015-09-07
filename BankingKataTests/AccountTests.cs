@@ -11,7 +11,9 @@ namespace BankingKataTests
     {
         private ILedger _ledger;
         private readonly Money _ledgerCalculatedBalance = new Money(10m);
-
+        private readonly Money _hardLimit = new Money(-10m);
+        private readonly Money _withdrawGoesOverHardLimit = new Money(25m);
+        private readonly Money _withdrawGoesUnderHardLimit = new Money(15m);
 
         [SetUp]
         public void SetUp()
@@ -78,21 +80,8 @@ namespace BankingKataTests
             Assert.That(actualBalance, Is.EqualTo(expectedBalance));
         }
 
-        [Test]
-        public void CanAlwaysWithdraw()
-        {
-            var account = new Account(_ledger);
-
-            var debitEntry = new ATMDebitEntry(DateTime.Now, new Money(3m));
-            var transactionResult = account.Withdraw(debitEntry);
-
-            var expectedResult = new TransactionResult(true);
-            Assert.That(transactionResult, Is.EqualTo(expectedResult));
-        }
-
-
-        [TestCase(20, false, TestName = "TransactionFailsWhenWithdrawIsOverLimit")]
-        [TestCase(0, true, TestName = "TransactionSucceedsWhenWithdrawIsUnderLimit")]
+        [TestCase(20, false, TestName = "TransactionFailsWhenWithdrawIsOverLimit123")]
+        [TestCase(0, true, TestName = "TransactionSucceedsWhenWithdrawIsUnderLimit123")]
         public void WithdrawResultIsCorrect(Decimal withdrawAmount, bool transactionSuccess)
         {
             var account = new Account(_ledger);
@@ -101,6 +90,30 @@ namespace BankingKataTests
             var transactionResult = account.Withdraw(debitEntry);
 
             var expectedResult = new TransactionResult(transactionSuccess);
+            Assert.That(transactionResult, Is.EqualTo(expectedResult));
+        }
+        
+        [Test]
+        public void TransactionFailsWhenWithdrawIsOverLimit()
+        {
+            var account = new Account(_ledger, _hardLimit);
+
+            var debitEntry = new ATMDebitEntry(DateTime.Now, _withdrawGoesOverHardLimit);
+            var transactionResult = account.Withdraw(debitEntry);
+
+            var expectedResult = new TransactionResult(false);
+            Assert.That(transactionResult, Is.EqualTo(expectedResult));
+        }
+        
+        [Test]
+        public void TransactionSucceedsWhenWithdrawIsUnderLimit()
+        {
+            var account = new Account(_ledger, _hardLimit);
+
+            var debitEntry = new ATMDebitEntry(DateTime.Now, _withdrawGoesUnderHardLimit);
+            var transactionResult = account.Withdraw(debitEntry);
+
+            var expectedResult = new TransactionResult(true);
             Assert.That(transactionResult, Is.EqualTo(expectedResult));
         }
     }
