@@ -4,15 +4,19 @@ namespace BankingKata
 {
     public class Account
     {
-        private readonly ILedger _ledger;
+        private static readonly Money DefaultHardLimit = new Money(0);
 
-        public Account(ILedger ledger)
+        private readonly ILedger _ledger;
+        private readonly Money _hardLimit;
+
+        public Account(ILedger ledger, Money hardLimit)
         {
             _ledger = ledger;
+            _hardLimit = hardLimit;
         }
 
         public Account()
-            : this(new Ledger())
+            : this(new Ledger(), DefaultHardLimit)
         {
         }
 
