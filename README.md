@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/6ooe9626k4fh9pju/branch/BDD?svg=true)](https://ci.appveyor.com/project/SuperDrew/bank-account-kata-series/branch/BDD)
+
 # Bank Account Kata
 
 This series of katas is based on building a banking application for managing customer accounts.
